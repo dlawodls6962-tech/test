@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>임재인 | 포트폴리오</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #2563eb;
+            --primary-soft: #eff6ff;
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 1단: 딥 블루 헤더 영역 */
+        .hero-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: #ffffff;
+            padding: 64px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-badge {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #93c5fd;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .hero-header h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+
+        .hero-header .subtitle {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-item a {
+            color: #93c5fd;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* 2단: 본문 컨테이너 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+
+        .section-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-soft);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 학력 및 병역 정보 그리드 */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .info-item {
+            background: #f8fafc;
+            padding: 16px 20px;
+            border-radius: 8px;
+            border: 1px solid #f1f5f9;
+        }
+
+        .info-label {
+            font-size: 0.825rem;
+            font-weight: 600;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* 목표 구문 */
+        .goal-quote {
+            background: var(--primary-soft);
+            border-left: 4px solid var(--primary-light);
+            padding: 18px 20px;
+            border-radius: 0 8px 8px 0;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #1e40af;
+        }
+
+        /* 자격증 / 스킬 그리드 */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .cert-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            padding: 14px 18px;
+            border-radius: 8px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .cert-card:hover {
+            border-color: #bfdbfe;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+        }
+
+        .cert-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .cert-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            background: var(--primary-soft);
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        /* 관심 분야 태그 */
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: var(--primary-soft);
+            color: #1e40af;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid #dbeafe;
+        }
+
+        /* 준비 중 영역 안내 메시지 */
+        .empty-state {
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            padding: 24px;
+            border-radius: 8px;
+            text-align: center;
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* 푸터 */
+        footer {
+            text-align: center;
+            padding: 24px 20px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            border-top: 1px solid var(--border);
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 640px) {
+            .hero-header {
+                padding: 40px 20px;
+            }
+            .hero-header h1 {
+                font-size: 1.8rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .section-card {
+                padding: 20px;
+            }
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1단: 메인 상단 헤더 (딥 블루) -->
+    <header class="hero-header">
+        <div class="hero-container">
+            <span class="profile-badge">PORTFOLIO</span>
+            <h1>임재인</h1>
+            <p class="subtitle">경영학 전공 | 유통 · 재무 · 금융 분야 지향</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <a href="mailto:jaein6962@naver.com">jaein6962@naver.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>📸</span>
+                    <a href="https://www.instagram.com/dlawodls" target="_blank" rel="noopener noreferrer">@dlawodls</a>
+                </div>
+                <div class="contact-item">
+                    <span>🎓</span>
+                    <span>청주대학교 경영학과</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2단: 본문 컨텐츠 -->
+    <main class="container">
+
+        <!-- 비전 및 목표 -->
+        <section class="section-card">
+            <h2 class="section-title">🎯 CAREER GOAL</h2>
+            <div class="goal-quote">
+                "안정적인 직장과 안정적인 삶의 주체가 되는 것"
+            </div>
+        </section>
+
+        <!-- 학력 및 병역 정보 -->
+        <section class="section-card">
+            <h2 class="section-title">🎓 EDUCATION & MILITARY</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">학교 / 전공</div>
+                    <div class="info-value">청주대학교 경영학과</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">학적 상태</div>
+                    <div class="info-value">재학 중 (3학년)</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">병역 사항</div>
+                    <div class="info-value">군필 (병장 만기전역)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 자격증 및 역량 -->
+        <section class="section-card">
+            <h2 class="section-title">📜 CERTIFICATIONS & SKILLS</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <span class="cert-name">투자자산운용사</span>
+                    <span class="cert-badge">금융</span>
+                </div>
+                <div class="cert-card">
+                    <span class="cert-name">한국사능력검정시험 1급</span>
+                    <span class="cert-badge">자격</span>
+                </div>
+                <div class="cert-card">
+                    <span class="cert-name">컴퓨터활용능력 2급</span>
+                    <span class="cert-badge">IT</span>
+                </div>
+                <div class="cert-card">
+                    <span class="cert-name">TOEIC 800점</span>
+                    <span class="cert-badge">어학</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 관심 분야 -->
+        <section class="section-card">
+            <h2 class="section-title">💡 INTERESTS</h2>
+            <div class="tag-group">
+                <span class="tag">📦 유통 (Distribution)</span>
+                <span class="tag">📊 재무 (Corporate Finance)</span>
+                <span class="tag">📈 금융 (Financial Markets)</span>
+            </div>
+        </section>
+
+        <!-- 주요 프로그램 / 프로젝트 -->
+        <section class="section-card">
+            <h2 class="section-title">📂 PROJECTS & EXPERIENCE</h2>
+            <div class="empty-state">
+                현재 관련 프로젝트 및 활동 경험을 정립하고 준비 중입니다.
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© IM JAEIN. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
